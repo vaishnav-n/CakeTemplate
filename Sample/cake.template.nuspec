@@ -3,6 +3,7 @@
   <metadata>    
     <id>cake.template</id>
     <version>1.0.0</version>
+    <description>Test package</description>
     <title>cake.template</title>
     <authors>new</authors>
     <owners>new</owners>
