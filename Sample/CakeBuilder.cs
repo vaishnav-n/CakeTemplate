@@ -34,13 +34,13 @@ namespace Sample
            // Version(context);
            // RestorePackages(context);
 
-            var path = context.MakeAbsolute(context.File("./ENT.UI/Properties/PublishProfiles/FolderProfile.pubxml"));
+           // var path = context.MakeAbsolute(context.File("./ENT.UI/Properties/PublishProfiles/FolderProfile.pubxml"));
 
             var msBuildSettings = new MSBuildSettings()
                 .SetConfiguration("Release")
                 .WithProperty("DeployOnBuild", "true")
-                .WithProperty("OutDir", buildoutputpath)
-                .WithProperty("PublishProfile", path.ToString());
+                .WithProperty("OutDir", buildoutputpath);
+               // .WithProperty("PublishProfile", path.ToString());
 
 
             context.MSBuild(solutionfilepath, msBuildSettings);
