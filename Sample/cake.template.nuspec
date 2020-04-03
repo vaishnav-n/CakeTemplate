@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package  xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>    
-    <id>Sample.dll</id>
-    <version>1.0.0</version>
+    <id>cake.template</id>
+    <version>1.0</version>
     <description>Test package</description>
     <title>cake.template</title>
     <authors>new</authors>
