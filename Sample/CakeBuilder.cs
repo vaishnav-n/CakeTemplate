@@ -12,6 +12,8 @@ using Cake.Common.Tools.NuGet;
 using Cake.Common.Tools.DotNetCore;
 using Cake.Common.IO;
 using Cake.Core.IO;
+using System.IO;
+using Cake.Common.Tools.DotNetCore.Test;
 
 namespace Sample
 {
@@ -138,5 +140,6 @@ namespace Sample
             settings.ToolPath = "c:\\tools\\gitversion\\gitversion.exe";
             //}
         }
+
     }
 }
