@@ -6,14 +6,14 @@ using Cake.Common.Tools.GitVersion;
 using Cake.Common.Tools.MSBuild;
 using Cake.Core;
 using Cake.Core.Annotations;
-using Cake.ArgumentHelpers;
+/*using Cake.ArgumentHelpers;
 using Cake.Common;
 using Cake.Common.Tools.NuGet;
 using Cake.Common.Tools.DotNetCore;
 using Cake.Common.IO;
 using Cake.Core.IO;
 using System.IO;
-using Cake.Common.Tools.DotNetCore.Test;
+using Cake.Common.Tools.DotNetCore.Test;*/
 
 namespace Sample
 {
