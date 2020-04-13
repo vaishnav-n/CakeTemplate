@@ -137,7 +137,9 @@ namespace Sample
             //{
             //Information("Using shared GitVersion");
 
-            settings.ToolPath = "c:\\tools\\gitversion\\gitversion.exe";
+            //settings.ToolPath = "c:\\tools\\gitversion\\gitversion.exe";
+
+            settings.ToolPath = "C:\\Users\\vaishnavn\\.nuget\\packages\\gitversion.commandline\\5.2.4\\tools\\gitversion.exe";
             //}
         }
 
