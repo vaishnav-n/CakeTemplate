@@ -8,7 +8,4 @@
     <authors>new</authors>
     <owners>new</owners>
   </metadata>
-  <files>
-  <file src="C:\Users\vaishnavn\source\repos\CakePractice\Cake\Sample\bin\Debug\Sample.dll" target="C:\Users\vaishnavn\source\repos\CakePractice\Cake\Sample\lib\Sample.dll"/>
-  </files> 
 </package>
