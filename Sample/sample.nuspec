@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package  xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>    
-    <id>cake.template</id>
-    <version>6.0.0</version>
+    <id>Sample</id>
+    <version>7.0.0</version>
     <description>Test package</description>
-    <title>cake.template</title>
+    <title>Sample</title>
     <authors>new</authors>
     <owners>new</owners>
   </metadata>
