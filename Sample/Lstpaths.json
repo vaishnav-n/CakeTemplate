@@ -1,0 +1,15 @@
+{ "lstPaths":[
+    {
+       "PublishPath":"./VisitAuthorization/HHAExchange.VisitAuthorization.Service/bin/publish",
+        "DeletePath":"./publishpackage/HHAExchange.VisitAuthorization.Service.*",
+        "CSprojPath":"VisitAuthorization/HHAExchange.VisitAuthorization.Service/HHAExchange.VisitAuthorization.Service.csproj",
+        "nuspecPath":"./VisitAuthorization/HHAExchange.VisitAuthorization.Service/bin/publish/HHAExchange.VisitAuthorization.Service.nuspec"
+    },
+    {
+        "PublishPath":"./VisitAuthorization/HHAExchange.VisitAuthorization.AuthorizationConsumer/bin/publish",
+        "DeletePath":"./publishpackage/HHAExchange.VisitAuthorization.AuthorizationConsumer.*",
+        "CSprojPath":"VisitAuthorization/HHAExchange.VisitAuthorization.AuthorizationConsumer/HHAExchange.VisitAuthorization.AuthorizationConsumer.csproj",
+        "nuspecPath":"./VisitAuthorization/HHAExchange.VisitAuthorization.AuthorizationConsumer/bin/publish/HHAExchange.VisitAuthorization.AuthorizationConsumer.nuspec"
+    }
+    ]
+}

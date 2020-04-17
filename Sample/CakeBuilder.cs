@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Cake.Common.IO;
+using Cake.Common.Tools.DotNetCore;
 using Cake.Common.Tools.DotNetCore.Publish;
 using Cake.Common.Tools.DotNetCore.Test;
 using Cake.Common.Tools.DotNetCore.VSTest;
 using Cake.Common.Tools.GitVersion;
 using Cake.Common.Tools.MSBuild;
+using Cake.Common.Tools.NuGet;
 using Cake.Common.Tools.NuGet.Pack;
 using Cake.Core;
 using Cake.Core.Annotations;
+using Newtonsoft.Json;
 /*using Cake.ArgumentHelpers;
 using Cake.Common;
 using Cake.Common.Tools.NuGet;
@@ -170,23 +174,64 @@ namespace Sample
                 settings);
         }
 
-       // [CakeMethodAlias]
-
-      /*  public static void publish(string filepaths)
+        [CakeMethodAlias]
+        public static void PublishMultipleTasks(ICakeContext context, string jsonPath)
         {
-            
-        }
-
-        public static void nugetpacking(string filepaths, NuGetPackSettings nugetpacksettings)
-        {
-            nugetpacksettings = new NuGetPackSettings
+            try
+            {
+                if (!string.IsNullOrEmpty(jsonPath))
                 {
-        }
+                    ProcessPath lstprocessPath = JsonConvert.DeserializeObject<ProcessPath>(jsonPath);
 
-        public static void dotnetpublish(string filepaths, DotNetCorePublishSettings publishsettings)
-        {
+
+
+                    if (lstprocessPath != null)
+                    {
+                        foreach (var path in lstprocessPath.lstPaths)
+                        {
+                            context.DeleteFiles(path.Deletepath);
+
+
+
+                            string publishDirectory = path.PublishPath;
+
+
+
+                            var publishSettings = new DotNetCorePublishSettings
+                            {
+                                Configuration = "Release",
+                                OutputDirectory = publishDirectory,
+                                Runtime = "win-x64"
+                            };
+
+
+
+                            context.DotNetCorePublish(path.CSprojPath, publishSettings);
+
+
+
+                            var nuGetPackSettings = new NuGetPackSettings
+                            {
+                                OutputDirectory = "./publishpackage/",
+                                Version = BuildNumber
+                            };
+
+
+
+                            context.NuGetPack(path.nuspecPath, nuGetPackSettings);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+
+            }
+
+
 
         }
-        */
     }
 }
