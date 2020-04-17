@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Cake.Common.Tools.DotNetCore.Publish;
+using Cake.Common.Tools.DotNetCore.Test;
+using Cake.Common.Tools.DotNetCore.VSTest;
 using Cake.Common.Tools.GitVersion;
 using Cake.Common.Tools.MSBuild;
+using Cake.Common.Tools.NuGet.Pack;
 using Cake.Core;
 using Cake.Core.Annotations;
 /*using Cake.ArgumentHelpers;
@@ -51,8 +55,9 @@ namespace Sample
         }
 
         [CakeMethodAlias]
-        public static void Version(this ICakeContext context)
+        public static string Version(this ICakeContext context)
         {
+            StringBuilder Message = new StringBuilder();
             GitVersionSettings buildServerSettings = new GitVersionSettings
             {
                 OutputType = GitVersionOutput.BuildServer,
@@ -72,7 +77,7 @@ namespace Sample
             var versionResult = context.GitVersion(localSettings);
 
             //Information("AssemblySemVer: " + versionResult.AssemblySemVer);
-
+            Message.Append("AssemblySemVer: " + versionResult.AssemblySemVer + "\n");
             // Convert 12.1.3.4 to 1201030004 etc.
             string paddedVersionNumber = string.Join("", versionResult.AssemblySemVer.Split('.').Select(s => s.PadLeft(2, '0')).ToArray()) + "00";
 
@@ -81,7 +86,10 @@ namespace Sample
             BuildNumber = versionResult.SemVer;
             BranchName = versionResult.BranchName;
 
+            Message.Append("BranchName updated: " + BranchName + "\n");
+            Message.Append("BuildNumber updated: " + BuildNumber + "\n");
             //Information("BuildNumber updated: " + BuildNumber);
+            return Message.ToString();
         }
 
         
@@ -143,5 +151,42 @@ namespace Sample
             //}
         }
 
+        [CakeMethodAlias]
+        public static void tests(this ICakeContext context,string slnpath, DotNetCoreTestSettings settings)
+        {
+             settings = new DotNetCoreTestSettings()
+            {
+                NoBuild = true,
+                Configuration = "Release"
+            };
+
+            //var testAdapterPath = GetFiles("./**/vstest15/TeamCity.VSTest.TestAdapter.dll").First();
+
+           // Information("Test Adapter Path " + testAdapterPath);
+
+            
+            context.tests(
+                slnpath,
+                settings);
+        }
+
+       // [CakeMethodAlias]
+
+      /*  public static void publish(string filepaths)
+        {
+            
+        }
+
+        public static void nugetpacking(string filepaths, NuGetPackSettings nugetpacksettings)
+        {
+            nugetpacksettings = new NuGetPackSettings
+                {
+        }
+
+        public static void dotnetpublish(string filepaths, DotNetCorePublishSettings publishsettings)
+        {
+
+        }
+        */
     }
 }
