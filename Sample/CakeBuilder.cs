@@ -14,14 +14,11 @@ using Cake.Common.Tools.NuGet.Pack;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Newtonsoft.Json;
-/*using Cake.ArgumentHelpers;
+using Cake.ArgumentHelpers;
 using Cake.Common;
-using Cake.Common.Tools.NuGet;
-using Cake.Common.Tools.DotNetCore;
-using Cake.Common.IO;
 using Cake.Core.IO;
 using System.IO;
-using Cake.Common.Tools.DotNetCore.Test;*/
+
 
 namespace Sample
 {
@@ -155,24 +152,6 @@ namespace Sample
             //}
         }
 
-        [CakeMethodAlias]
-        public static void tests(this ICakeContext context,string slnpath, DotNetCoreTestSettings settings)
-        {
-             settings = new DotNetCoreTestSettings()
-            {
-                NoBuild = true,
-                Configuration = "Release"
-            };
-
-            //var testAdapterPath = GetFiles("./**/vstest15/TeamCity.VSTest.TestAdapter.dll").First();
-
-           // Information("Test Adapter Path " + testAdapterPath);
-
-            
-            context.tests(
-                slnpath,
-                settings);
-        }
 
         [CakeMethodAlias]
         public static void PublishMultipleTasks(ICakeContext context, string jsonPath)
@@ -182,8 +161,6 @@ namespace Sample
                 if (!string.IsNullOrEmpty(jsonPath))
                 {
                     ProcessPath lstprocessPath = JsonConvert.DeserializeObject<ProcessPath>(jsonPath);
-
-
 
                     if (lstprocessPath != null)
                     {
